@@ -29,8 +29,11 @@ gets padding.
   it, only when it is padded.
 - **Headers and tables when they are the clearest form for the content.** In
   a short chat answer they usually are not.
-- **One idea per paragraph**, the claim first and in bold, then at most two
-  sentences of support.
+- **Paragraphs vary with their content.** Lead with the claim where a reader
+  scans for it (a summary, a reference section); elsewhere start from the
+  data or the thing measured and let the point land at the end. A paragraph
+  can be one sentence or six. Bold marks the few claims a skimmer must not
+  miss, not the first line of every paragraph.
 - **Concrete over abstract.** Name the actual thing: "the plugin's meters
   sit still" beats "third-party surfaces lack liveness"; "cap it at four
   tracks and show which on the strip" beats "make it a bounded, visible
@@ -50,8 +53,14 @@ gets padding.
 - Lead with the answer, add the context it needs, then the next step if
   there is one.
 - Full sentences and ordinary grammar; terse is not telegraphic.
-- **One idea per sentence**, the subject and verb first. A sentence that needs
-  a second read is split.
+- **One idea per sentence, at whatever length that idea takes**, the subject
+  and verb first. A run of numbers can sit in one long sentence with
+  semicolons or parentheses; a conclusion can be four words. A sentence that
+  needs a second read is split, but never three sentences of the same length
+  and shape in a row.
+- **Samples of the person's own writing set the cadence.** When
+  `voice-samples.md` is present, match its sentence rhythm, punctuation and
+  clause density, not its content.
 - **A qualifier gets its own sentence, after the claim it limits.** When a
   correction narrows a claim, rewrite the sentence; do not wedge the
   qualifier into it.
@@ -68,6 +77,9 @@ gets padding.
   matters.
 - A recap of what was just done when the diff or the output already shows
   it.
+- Reflexive contrasts: "X, not Y", "not because of X but Y", "X rather than
+  Y". State the cause. Name what was ruled out only when the reader would
+  otherwise assume it, and then in its own sentence.
 - Em dashes inside a sentence, in every text. A comma, colon, parentheses
   or a new sentence does the job. A dash used for structure, such as a bullet
   marker or the break between a list item's label and its description, is

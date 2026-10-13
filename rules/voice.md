@@ -50,6 +50,14 @@ gets padding.
 - Lead with the answer, add the context it needs, then the next step if
   there is one.
 - Full sentences and ordinary grammar; terse is not telegraphic.
+- **One idea per sentence**, the subject and verb first. A sentence that needs
+  a second read is split.
+- **A qualifier gets its own sentence, after the claim it limits.** When a
+  correction narrows a claim, rewrite the sentence; do not wedge the
+  qualifier into it.
+- **Verbs, not nouns.** "A bad split loses throughput" beats "the losses a
+  bad split caused".
+- **A coined term is defined once, in plain words, before it is used.**
 
 ## Cut
 

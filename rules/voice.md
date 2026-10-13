@@ -59,8 +59,13 @@ gets padding.
   needs a second read is split, but never three sentences of the same length
   and shape in a row.
 - **Samples of the person's own writing set the cadence.** When
-  `voice-samples.md` is present, match its sentence rhythm, punctuation and
-  clause density, not its content.
+  `voice-samples/` is present, each file in it is a persona: a first line
+  saying when it applies, then real writing from that setting. Use
+  `default.md` unless the request names a persona or the kind of text
+  matches another file's first line. Match the persona's sentence rhythm,
+  punctuation and clause density, not its content. A persona sets rhythm
+  only; every other rule here still holds unless its file names the
+  exception.
 - **A qualifier gets its own sentence, after the claim it limits.** When a
   correction narrows a claim, rewrite the sentence; do not wedge the
   qualifier into it.

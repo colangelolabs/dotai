@@ -30,9 +30,12 @@ gets padding.
 - **Headers and tables when they are the clearest form for the content.** In
   a short chat answer they usually are not.
 - **Paragraphs vary with their content.** Lead with the claim where a reader
-  scans for it (a summary, a reference section); elsewhere start from the
-  data or the thing measured and let the point land at the end. A paragraph
-  can be one sentence or six. Bold marks the few claims a skimmer must not
+  scans for it (a summary table, a list of findings). In running prose,
+  vary how paragraphs open: a number, a machine, a condition, sometimes the
+  claim. No single opener for most of them, a short abstract summary such
+  as "Request shape matters too" least of all. Stop at the last fact; a
+  closing sentence that restates the point adds nothing. A paragraph can be
+  one sentence or seven. Bold marks the few claims a skimmer must not
   miss, not the first line of every paragraph.
 - **Concrete over abstract.** Name the actual thing: "the plugin's meters
   sit still" beats "third-party surfaces lack liveness"; "cap it at four
@@ -52,6 +55,8 @@ gets padding.
   next, unless a decision is genuinely blocked.
 - Lead with the answer, add the context it needs, then the next step if
   there is one.
+- **A post or document opens on the work itself**: the setup, the run, or
+  what prompted it. No opening sentence announcing what the text covers.
 - Full sentences and ordinary grammar; terse is not telegraphic.
 - **One idea per sentence, at whatever length that idea takes**, the subject
   and verb first. A run of numbers can sit in one long sentence with
@@ -63,9 +68,13 @@ gets padding.
   saying when it applies, then real writing from that setting. Use
   `default.md` unless the request names a persona or the kind of text
   matches another file's first line. Match the persona's sentence rhythm,
-  punctuation and clause density, not its content. A persona sets rhythm
-  only; every other rule here still holds unless its file names the
-  exception.
+  punctuation and clause density, not its content. Its habits (semicolons,
+  parentheses, asides) set an upper bound on how often to use them, not a
+  quota. A persona sets rhythm only; every other rule here still holds
+  unless its file names the exception.
+- **No rule here is a template.** These rules describe what to avoid and
+  what a reader needs; satisfying them the same way every time is its own
+  pattern. Vary the means.
 - **A qualifier gets its own sentence, after the claim it limits.** When a
   correction narrows a claim, rewrite the sentence; do not wedge the
   qualifier into it.
@@ -85,6 +94,9 @@ gets padding.
 - Reflexive contrasts: "X, not Y", "not because of X but Y", "X rather than
   Y". State the cause. Name what was ruled out only when the reader would
   otherwise assume it, and then in its own sentence.
+- Habitual three-part parallels ("between X, between Y, and between Z").
+  When a set has to be named, drop the repeated word or use a real list;
+  never drop items to fix the rhythm.
 - Em dashes inside a sentence, in every text. A comma, colon, parentheses
   or a new sentence does the job. A dash used for structure, such as a bullet
   marker or the break between a list item's label and its description, is

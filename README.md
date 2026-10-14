@@ -27,6 +27,20 @@ Tools are found in this order: `$CLAUDE_CONFIG_DIR`, `~/.claude`,
 `~/.claude-personal`. A directory has to exist already to be linked, so
 nothing is invented for a tool that is not installed.
 
+### Voice personas
+
+`rules/voice.md` reads writing personas from `rules/voice-samples/`, one
+`.md` file per kind of writing. They hold personal writing and quoted text,
+so they live in a directory of your own, outside this repo, and
+`rules/voice-samples` is gitignored. Point the installer at that directory
+to link it:
+
+```sh
+VOICE_SAMPLES_DIR=<path-to-your-personas> ./install.sh
+```
+
+Without personas, `voice.md` applies on its own.
+
 ## Layout
 
 Keep the root tool-neutral. Anything that only one tool understands goes in

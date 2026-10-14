@@ -33,6 +33,10 @@ fi
 
 link_one() {
     local link="$1" want="$2"
+    if [[ ! -L $link && -d $link && $(readlink -f "$link") == "$(readlink -f "$want")" ]]; then
+        echo "ok        $link (in place)"
+        return
+    fi
     if [[ -L $link ]]; then
         local at
         at="$(readlink -f "$link")"

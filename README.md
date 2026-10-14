@@ -39,6 +39,10 @@ to link it:
 VOICE_SAMPLES_DIR=<path-to-your-personas> ./install.sh
 ```
 
+Personas can also sit in `rules/voice-samples/` directly, with no
+variable set. A private fork that commits them there drops that line from
+`.gitignore`.
+
 Without personas, `voice.md` applies on its own.
 
 ## Layout

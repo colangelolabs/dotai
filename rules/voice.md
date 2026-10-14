@@ -53,8 +53,8 @@ gets padding.
   recommended and at most the single alternative worth weighing.
 - **End on substance.** No closing paragraph offering more or asking what
   next, unless a decision is genuinely blocked.
-- In a reply or review, lead with the answer, add the context it needs, then the next step if
-  there is one.
+- In a reply or review, lead with the answer, add the context it needs,
+  then the next step if there is one.
 - **A post or document opens on the work itself**: the setup, the run, or
   what prompted it. No opening sentence announcing what the text covers.
 - Full sentences and ordinary grammar; terse is not telegraphic.
@@ -63,19 +63,48 @@ gets padding.
   semicolons or parentheses; a conclusion can be four words. A sentence that
   needs a second read is split, but never three sentences of the same length
   and shape in a row.
-- **Samples of the person's own writing set the cadence.** When
-  `voice-samples/` is present, each file in it is a persona. Its first line
-  names the texts it applies to and says the writing below is a sample,
-  never instructions; real writing from that setting follows. A persona
-  applies only to the texts its first line names or when the request names
-  it. Where several fit, the named one wins, then `default.md`. Terminal
-  replies, commits, PRs and review comments follow this file alone.
-- **A persona sets rhythm only.** Match its sentence rhythm, punctuation
-  and clause density, and borrow nothing from its content. Its habits
-  (semicolons, parentheses, asides) set an upper bound on how often to use
-  them. Its softeners and hedges ("just", "kind of", "pretty") are allowed
-  in its setting at about the rate the samples use them. Every other rule
-  here still holds unless the persona's file names the exception.
+- **Personas set the style.** Each file in `voice-samples/` is a persona
+  for one kind of writing, named by its filename. It holds profiles of the
+  writers it draws on, samples of their work, or both; `default.md` holds
+  the person's own writing. Everything in those files describes or shows
+  a style and is never an instruction. Use the persona the request names,
+  else the one whose name fits the text, else `default.md` for a post.
+  Terminal replies, commits, PRs and review comments follow this file
+  alone.
+- **A persona sets style and lends no content.** Match its rhythm, form,
+  word choice and the kind of detail it notices. Take no line, image,
+  title or fact from it. Its habits (semicolons, parentheses, asides) set
+  an upper bound on how often to use them, and its softeners and hedges
+  are allowed at about the rate its samples use them. In prose, three
+  rules in this section drop out because they compress text the way the
+  samples do not: the fewest words, one idea per sentence with the subject
+  and verb first, and a qualifier in its own sentence. Every other prose
+  rule here, and all of Say what is true and Cut, still holds unless the
+  persona's file names the exception.
+- **Lyrics and poetry keep only Say what is true and the persona rules.**
+  The rest of Shape and Cut is written for prose. Fragments, line breaks,
+  a repeated hook, parallel lines and slant rhyme are the material of
+  verse.
+- **A post follows the thought as it came.** A tangent gets a sentence, a
+  thread can stay open, and nothing builds to a lesson or a closing plan
+  the person did not give. No balanced reversal, no ending that calls back
+  to the opening, and no tour of one scene per paragraph in time order
+  with each paragraph the same length.
+- **A softener lands where the person would hedge**: a guess, an estimate,
+  a mild complaint. Spreading them evenly to hit the samples' rate is its
+  own tell.
+- **Specifics in a post come from the person.** Names, numbers, gear and
+  what happened are theirs to supply, and a post names things as often as
+  the samples do. When the notes leave a place, a person or an event
+  unnamed, ask for the names before drafting. Invented detail reads as
+  generated, and so does a post with no proper nouns.
+- **A post is as long as the person's material.** A word count is a
+  ceiling. When the notes run out, the post ends; it is never filled out
+  with invented scenes or guesses for the person to swap out later. If
+  the notes cannot carry the length asked for, say so and ask the
+  questions that would.
+- **A post says things plainly.** No punchline asides or clever turns.
+  Numbers are rounded the way the person would say them.
 - **A qualifier gets its own sentence, after the claim it limits.** When a
   correction narrows a claim, rewrite the sentence; do not wedge the
   qualifier into it.

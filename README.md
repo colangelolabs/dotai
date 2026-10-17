@@ -21,11 +21,15 @@ commit, and a new machine is a clone plus one command.
 
 It is idempotent — run it after a pull, on a new machine, or when a tool
 starts keeping its config somewhere new. An existing real `rules/` directory
-is moved aside as `rules.before-dotai.<timestamp>`, never deleted.
+is moved aside as `rules.before-dotai.<timestamp>`, never deleted. A link
+that points elsewhere, or at a directory that no longer exists, is replaced.
 
 Tools are found in this order: `$CLAUDE_CONFIG_DIR`, `~/.claude`,
 `~/.claude-personal`. A directory has to exist already to be linked, so
-nothing is invented for a tool that is not installed.
+nothing is invented for a tool that is not installed. With none of them
+present the installer exits 1 and creates nothing.
+
+`bash tests/install-test.sh` checks the installer in throwaway directories.
 
 ### Voice personas
 
@@ -54,6 +58,7 @@ rename.
 ```
 rules/        working-style rules, tool-neutral
 install.sh    links them into place
+tests/        checks for install.sh
 ```
 
 ## Scope

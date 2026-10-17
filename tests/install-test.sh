@@ -3,15 +3,25 @@
 # checks its output and exit code. Never touches the real home.
 #
 #   bash tests/install-test.sh
-#   INSTALL_SH=<path> bash tests/install-test.sh   # test another copy of the script
+#   DOTAI_INSTALL_SH=<path> bash tests/install-test.sh   # test another copy of the script
 set -euo pipefail
 
+# A regressed installer could write to the real root (an empty target becomes /rules).
+if [[ $(id -u) -eq 0 ]]; then
+    echo "refusing to run as root" >&2
+    exit 1
+fi
+
 src="$(CDPATH= cd -- "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
-installer="${INSTALL_SH:-$src/install.sh}"
+installer="${DOTAI_INSTALL_SH:-$src/install.sh}"
+[[ -z ${DOTAI_INSTALL_SH:-} ]] || echo "testing $installer"
+# mktemp has its own assignment so set -e stops the script when it fails,
+# before the trap exists.
+tmp="$(mktemp -d)"
+trap 'rm -rf -- "$tmp"' EXIT
 # Physical path, so expected strings match what the script prints where
 # the temp directory sits behind a symlink (/var on macOS).
-work="$(CDPATH= cd -- "$(mktemp -d)" && pwd -P)"
-trap 'rm -rf "$work"' EXIT
+work="$(CDPATH= cd -- "$tmp" && pwd -P)"
 
 failures=0
 fail() { echo "  FAIL: $1"; failures=$((failures + 1)); }
@@ -88,6 +98,12 @@ run "$home/alias/install.sh"
 expect_eq "exit code" "$rc" 0
 expect_line "link" "linked    $cfg/rules -> $repo/rules"
 expect_eq "link target" "$(readlink "$cfg/rules")" "$repo/rules"
+
+new_case "link whose target and repo rules directory are both unreachable"
+rm -rf "$repo/rules"
+ln -s "$home/missing" "$cfg/rules"
+run "$repo/install.sh" --status
+expect_line "status" "WRONG     $cfg/rules -> $home/missing"
 
 if [[ $failures -ne 0 ]]; then
     echo "$failures failure(s)"

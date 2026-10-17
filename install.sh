@@ -11,7 +11,7 @@
 # deleted.
 set -euo pipefail
 
-here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+here="$(CDPATH= cd -- "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 status_only=false
 [[ ${1:-} == --status ]] && status_only=true
 
@@ -19,32 +19,41 @@ status_only=false
 # only if it already exists, so this never invents config for a tool that is
 # not installed -- except the one an environment variable names outright.
 targets=()
-[[ -n ${CLAUDE_CONFIG_DIR:-} ]] && targets+=("$CLAUDE_CONFIG_DIR")
+add_target() {
+    local t
+    for t in ${targets[@]+"${targets[@]}"}; do
+        [[ $t == "$1" ]] && return
+    done
+    targets+=("$1")
+}
+[[ -n ${CLAUDE_CONFIG_DIR:-} ]] && add_target "$CLAUDE_CONFIG_DIR"
 for dir in "$HOME/.claude" "$HOME/.claude-personal"; do
-    [[ -d $dir ]] && targets+=("$dir")
+    [[ -d $dir ]] && add_target "$dir"
 done
-# Unique, in order.
-mapfile -t targets < <(printf '%s\n' "${targets[@]}" | awk '!seen[$0]++')
 
 if [[ ${#targets[@]} -eq 0 ]]; then
     echo "no agent config directory found (looked for CLAUDE_CONFIG_DIR, ~/.claude, ~/.claude-personal)" >&2
     exit 1
 fi
 
+# The physical path of a directory, or nothing if it cannot be entered (so a
+# dangling link resolves to nothing instead of ending the script).
+resolve() { (CDPATH= cd -- "$1" 2>/dev/null && pwd -P) || true; }
+
 link_one() {
-    local link="$1" want="$2"
-    if [[ ! -L $link && -d $link && $(readlink -f "$link") == "$(readlink -f "$want")" ]]; then
+    local link="$1" want="$2" wanted at
+    wanted="$(resolve "$want")"
+    at="$(resolve "$link")"
+    if [[ ! -L $link && -d $link && -n $wanted && $at == "$wanted" ]]; then
         echo "ok        $link (in place)"
         return
     fi
     if [[ -L $link ]]; then
-        local at
-        at="$(readlink -f "$link")"
-        if [[ $at == "$(readlink -f "$want")" ]]; then
+        if [[ -n $wanted && $at == "$wanted" ]]; then
             echo "ok        $link -> $want"
             return
         fi
-        $status_only && { echo "WRONG     $link -> $at"; return; }
+        $status_only && { echo "WRONG     $link -> $(readlink "$link")"; return; }
         rm "$link"
     elif [[ -e $link ]]; then
         $status_only && { echo "NOT LINKED $link (a real directory)"; return; }
